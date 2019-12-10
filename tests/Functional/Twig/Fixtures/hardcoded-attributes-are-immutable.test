@@ -1,0 +1,8 @@
+--TEST--
+Hardcoded attributes for type and Data Processing Service are immutable
+--TEMPLATE--
+{{ (usercentrics('example-dps', {'data-usercentrics': 'I tricked you', src: 'foo', type: 'Ha ha!'})) }}
+--DATA--
+return []
+--EXPECT--
+<script type="text/plain" data-usercentrics="example-dps" src="foo"></script>

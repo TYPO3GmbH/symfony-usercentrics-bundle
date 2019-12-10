@@ -1,0 +1,31 @@
+{
+    "name": "t3g/symfony-usercentrics-bundle",
+    "description": "Integration of usercentrics.com for Symfony",
+    "type": "symfony-bundle",
+    "license": "MIT",
+    "minimum-stability": "stable",
+    "config": {
+        "bin-dir": "bin/",
+        "sort-packages": true,
+        "optimize-autoloader": true
+    },
+    "require": {
+        "php": "^7.2",
+        "symfony/dependency-injection": "^4.2||^5.0",
+        "symfony/twig-bundle": "^4.2||^5.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^2.16",
+        "phpunit/phpunit": "^8.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "T3G\\Bundle\\UsercentricsBundle\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "T3G\\Bundle\\UsercentricsBundle\\Tests\\": "tests/"
+        }
+    }
+}

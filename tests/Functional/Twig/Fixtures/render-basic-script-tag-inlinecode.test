@@ -1,0 +1,8 @@
+--TEST--
+Render a basic <script> tag with inline code
+--TEMPLATE--
+{{ (usercentrics('example-dps', {}, 'let foo = \'bar\';')) }}
+--DATA--
+return []
+--EXPECT--
+<script type="text/plain" data-usercentrics="example-dps">let foo = 'bar';</script>

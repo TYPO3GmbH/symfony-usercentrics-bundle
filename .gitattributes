@@ -1,0 +1,9 @@
+/.php_cs.dist export-ignore
+/tests export-ignore
+/phpunit.xml.dist export-ignore
+
+# Enforce checkout with linux lf consistent over all platforms
+*.php text eol=lf
+*.rst text eol=lf
+*.md text eol=lf
+*.yml text eol=lf

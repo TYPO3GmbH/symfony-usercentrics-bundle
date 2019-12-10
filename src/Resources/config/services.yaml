@@ -1,0 +1,10 @@
+services:
+  _defaults:
+    public: false
+    autowire: true
+    autoconfigure: true
+
+  T3G\Bundle\UsercentricsBundle\Twig\UsercentricsExtension:
+    arguments: ['%t3g.usercentrics%']
+    tags:
+      - name: twig.extension

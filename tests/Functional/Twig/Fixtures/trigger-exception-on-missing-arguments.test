@@ -1,0 +1,8 @@
+--TEST--
+InvalidArgumentException is thrown if src and inlineCode are missing
+--TEMPLATE--
+{{ (usercentrics('foo')) }}
+--DATA--
+return []
+--EXCEPTION--
+Twig\Error\RuntimeError: An exception has been thrown during the rendering of a template ("No JavaScript code provided. Either include JavaScript via $attributes['src'] or $inlineCode.") in "index.twig" at line 2.

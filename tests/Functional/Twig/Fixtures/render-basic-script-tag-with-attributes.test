@@ -1,0 +1,8 @@
+--TEST--
+Render a basic <script> tag with attributes
+--TEMPLATE--
+{{ (usercentrics('example-dps', {src: 'foo', async: true, 'data-foo': 'bar'}))}}
+--DATA--
+return []
+--EXPECT--
+<script type="text/plain" data-usercentrics="example-dps" src="foo" async data-foo="bar"></script>
