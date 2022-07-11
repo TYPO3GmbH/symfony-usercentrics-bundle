@@ -22,7 +22,12 @@ jobs:
       - name: Install
         run: |
           composer install --no-progress
+
+      - name: Lint
+        run: composer t3g:test:php:lint
+
       - name: CGL
-        run: ./bin/php-cs-fixer fix --dry-run --diff
-      - name: Tests
-        run: ./bin/phpunit
+        run: composer t3g:cgl
+
+      - name: Functional Tests
+        run: composer t3g:test:php:functional
