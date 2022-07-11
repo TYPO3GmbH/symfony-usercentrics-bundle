@@ -4,26 +4,30 @@ on: [push, pull_request]
 
 jobs:
   build-php:
-    name: Build PHP ${{ matrix.php }}
+    name: Build PHP ${{ matrix.php-versions }}
     runs-on: ubuntu-latest
     strategy:
       max-parallel: 4
       fail-fast: false
       matrix:
-        php: ['7.2', '7.3', '7.4']
+        php-versions: ['7.2', '7.3', '7.4', '8.0', '8.1']
     steps:
       - name: Checkout
-        uses: actions/checkout@v1
-      - name: Setup PHP
-        uses: shivammathur/setup-php@v1
+        uses: actions/checkout@v3
+      - name: Setup PHP ${{ matrix.php-versions }}
+        uses: shivammathur/setup-php@v2
         with:
-          php-version: ${{ matrix.php }}
-          extensions: mbstring, xml, ctype, iconv
-          coverage: none
+            php-version: ${{ matrix.php-versions }}
+            coverage: pcov
       - name: Install
         run: |
           composer install --no-progress
+
+      - name: Lint
+        run: composer t3g:test:php:lint
+
       - name: CGL
-        run: ./bin/php-cs-fixer fix --dry-run --diff
-      - name: Tests
-        run: ./bin/phpunit
+        run: composer t3g:cgl
+
+      - name: Functional Tests
+        run: composer t3g:test:php:functional

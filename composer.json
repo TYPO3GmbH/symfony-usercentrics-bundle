@@ -10,13 +10,33 @@
         "optimize-autoloader": true
     },
     "require": {
-        "php": "^7.2",
-        "symfony/dependency-injection": "^4.2||^5.0",
-        "symfony/twig-bundle": "^4.2||^5.0"
+        "php": "^7.2 || ^8.0",
+        "symfony/dependency-injection": "^4.2 || ^5.4",
+        "symfony/twig-bundle": "^4.2 || ^5.4"
     },
     "require-dev": {
-        "friendsofphp/php-cs-fixer": "^2.16",
-        "phpunit/phpunit": "^8.5"
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "overtrue/phplint": "^3.0 || ^4.0 || ^5.0",
+        "symfony/phpunit-bridge": "^4.4 || ^5.4"
+    },
+    "scripts": {
+        "t3g:test:php:functional": [
+            "simple-phpunit -c phpunit.xml.dist --testsuite \"Functional Test Suite\""
+        ],
+        "t3g:cgl": [
+            "php-cs-fixer fix -v --dry-run"
+        ],
+        "t3g:cgl:fix": [
+            "php-cs-fixer fix"
+        ],
+        "t3g:test:php:lint": [
+            "phplint"
+        ],
+        "t3g:test": [
+            "@t3g:cgl",
+            "@t3g:test:php:lint",
+            "@t3g:test:php:functional"
+        ]
     },
     "autoload": {
         "psr-4": {
